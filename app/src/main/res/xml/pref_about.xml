@@ -2,18 +2,31 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Preference
-        android:title=""
-        android:summary=""
-        android:icon="@drawable/github_box" />
+        android:title="Source Code"
+        android:summary="Another extension of sparky project. Fontio is open-source but bruno is not."
+
+        android:icon="@drawable/github_box">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://github.com/codekidX/Fontio"/>
+    </Preference>
 
     <Preference
-        android:title=""
-        android:summary=""
-        android:icon="@drawable/google_circles_communities" />
+        android:title="Google+ Community"
+        android:summary="Join google+ community to know more about the development and share ideas."
+        android:icon="@drawable/google_circles_communities">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://plus.google.com/u/1/communities/118270265642642596141"/>
+    </Preference>
 
     <Preference
-        android:title=""
-        android:summary=""
-        android:icon="@drawable/telegram" />
+        android:title="Testers group"
+        android:summary="Become a tester to enjoy new features first."
+        android:icon="@drawable/telegram">
+    <intent
+        android:action="android.intent.action.VIEW"
+        android:data="https://t.me/joinchat/AAAAAApme42SBM2mOwq4fw"/>
+</Preference>
 
 </PreferenceScreen>
