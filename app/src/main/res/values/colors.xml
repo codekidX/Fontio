@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#483D8B</color>
+    <color name="colorPrimaryDark">#352d69</color>
+    <color name="colorAccent">#87CEEB</color>
+
+    <color name="memory_bar_color">@color/colorAccent</color>
+</resources>

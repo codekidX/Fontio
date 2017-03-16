@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_fontio_preview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.codekidlabs.fontio.FontioPreview"
+    tools:showIn="@layout/activity_fontio_preview">
+
+    <RelativeLayout
+        android:layout_above="@+id/bottom_control"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/preview_quote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
+            android:textAlignment="center"
+            android:text="@string/letters" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottom_control"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.AppCompat"
+            android:id="@+id/np_seekbar"
+            android:minHeight="4dp"
+            android:layout_marginLeft="-16dp"
+            android:layout_marginStart="-16dp"
+            android:layout_marginEnd="-16dp"
+            android:layout_marginRight="-16dp"
+            android:thumb="@drawable/np_progress_thumb"
+            android:progressDrawable="@drawable/np_progress_bg"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:indeterminate="false" />
+
+        <RelativeLayout
+            android:layout_below="@id/np_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.codekidlabs.fontio.GeoTextView
+                android:id="@+id/selected_font_name"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:id="@+id/package_font_button"
+                android:src="@drawable/package_variant_closed"
+                android:tint="@android:color/white"
+                android:background="@color/colorPrimaryDark"
+                android:foreground="@drawable/white_ripple"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_width="60dp"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:title=""
+        android:summary=""
+        android:icon="@drawable/github_box" />
+
+    <Preference
+        android:title=""
+        android:summary=""
+        android:icon="@drawable/google_circles_communities" />
+
+    <Preference
+        android:title=""
+        android:summary=""
+        android:icon="@drawable/telegram" />
+
+</PreferenceScreen>

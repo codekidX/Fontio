@@ -1,0 +1,35 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.codekidlabs.fontio.FontioPreview">
+
+
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_store"
+        android:orderInCategory="100"
+        android:icon="@drawable/compass"
+        android:title="Explore"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_custom_quote"
+        android:orderInCategory="100"
+        android:icon="@drawable/format_quote_close"
+        android:title="Change Preview Text"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_choose_font"
+        android:orderInCategory="100"
+        android:icon="@drawable/alphabetical"
+        android:title="Choose ttf"
+        app:showAsAction="always" />
+
+</menu>
