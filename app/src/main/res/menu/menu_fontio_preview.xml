@@ -11,12 +11,12 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_store"
-        android:orderInCategory="100"
-        android:icon="@drawable/compass"
-        android:title="Explore"
-        app:showAsAction="always" />
+    <!--<item-->
+        <!--android:id="@+id/action_store"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:icon="@drawable/compass"-->
+        <!--android:title="Explore"-->
+        <!--app:showAsAction="always" />-->
 
     <item
         android:id="@+id/action_custom_quote"

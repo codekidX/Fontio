@@ -260,7 +260,7 @@ public class FontioPreview extends AppCompatActivity {
     private void initPrompts() {
         if(!sharedPreferences.contains(References.PROMPT_CHOOSER)) {
             new MaterialTapTargetPrompt.Builder(FontioPreview.this)
-                    .setTarget(fontioMenu.getItem(3).getItemId())
+                    .setTarget(fontioMenu.getItem(2).getItemId())
                     .setPrimaryText("Choose Font")
                     .setIcon(R.drawable.alphabetical)
                     .setSecondaryText("select ttf/otf file")
