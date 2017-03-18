@@ -232,32 +232,10 @@ public class FontioPreview extends AppCompatActivity {
         });
 
 
+
     }
 
-    private void doTheWiggleAnimation() {
-        mFontPreview.startAnimation(wiggleWiggleWiggle);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_fontio_preview, menu);
-        fontioMenu = menu;
-
-        initPrompts();
-
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                initPrompts();
-            }
-        }, 310);
-
-        return true;
-    }
-
-    private void initPrompts() {
+    private void showChooseFontPrompt() {
         if(!sharedPreferences.contains(References.PROMPT_CHOOSER)) {
             new MaterialTapTargetPrompt.Builder(FontioPreview.this)
                     .setTarget(fontioMenu.getItem(2).getItemId())
@@ -271,48 +249,75 @@ public class FontioPreview extends AppCompatActivity {
 
                             editor.putBoolean(References.PROMPT_CHOOSER, true);
                             editor.apply();
-
-
-                            if(!sharedPreferences.contains(References.PROMPT_PACKAGE)) {
-                                new MaterialTapTargetPrompt.Builder(FontioPreview.this)
-                                        .setTarget(mPackageButton)
-                                        .setPrimaryText("Package Font")
-                                        .setIcon(R.drawable.package_variant_closed)
-                                        .setSecondaryText("Single Press - package font \n Long Press - open theme engine")
-                                        .setBackgroundColour(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary))
-                                        .setOnHidePromptListener(new MaterialTapTargetPrompt.OnHidePromptListener() {
-                                            @Override
-                                            public void onHidePrompt(MotionEvent event, boolean tappedTarget) {
-
-                                                editor.putBoolean(References.PROMPT_PACKAGE, true);
-                                                editor.apply();
-
-                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && coordinatorLayout != null && ContextCompat.checkSelfPermission(FontioPreview.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                                                    Snackbar.make(coordinatorLayout, "Fontio needs your permission to access storage for selecting the font ttf", Snackbar.LENGTH_INDEFINITE)
-                                                            .setAction("GRANT", new View.OnClickListener() {
-                                                                @Override
-                                                                public void onClick(View v) {
-                                                                    ActivityCompat.requestPermissions(FontioPreview.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 199);
-                                                                }
-                                                            }).show();
-                                                }
-                                            }
-
-                                            @Override
-                                            public void onHidePromptComplete() {
-
-                                            }
-                                        }).show();
-                            }
                         }
 
                         @Override
                         public void onHidePromptComplete() {
-
+                            showPackagePrompt();
                         }
                     }).show();
         }
+    }
 
+    private void showPackagePrompt() {
+        if(!sharedPreferences.contains(References.PROMPT_PACKAGE)) {
+            new MaterialTapTargetPrompt.Builder(FontioPreview.this)
+                    .setTarget(mPackageButton)
+                    .setPrimaryText("Package Font")
+                    .setIcon(R.drawable.package_variant_closed)
+                    .setSecondaryText("Single Press - package font \n Long Press - open theme engine")
+                    .setBackgroundColour(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary))
+                    .setOnHidePromptListener(new MaterialTapTargetPrompt.OnHidePromptListener() {
+                        @Override
+                        public void onHidePrompt(MotionEvent event, boolean tappedTarget) {
+
+                            editor.putBoolean(References.PROMPT_PACKAGE, true);
+                            editor.apply();
+
+                        }
+
+                        @Override
+                        public void onHidePromptComplete() {
+                            askForPermission();
+                        }
+                    }).show();
+        }
+    }
+
+
+    private void doTheWiggleAnimation() {
+        mFontPreview.startAnimation(wiggleWiggleWiggle);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_fontio_preview, menu);
+        fontioMenu = menu;
+
+
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                showChooseFontPrompt();
+            }
+        }, 310);
+
+        return true;
+    }
+
+    private void askForPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && coordinatorLayout != null && ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            Snackbar.make(coordinatorLayout, "Fontio needs your permission to access storage for selecting the font ttf", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("GRANT", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ActivityCompat.requestPermissions(FontioPreview.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 199);
+                        }
+                    }).show();
+        }
     }
 
     @Override
