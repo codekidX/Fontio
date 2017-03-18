@@ -12,6 +12,15 @@
     </Preference>
 
     <Preference
+        android:title="Report Issue"
+        android:summary="Reporting an issue will directly notify me and the testers group so that we can work on fixing it faster."
+        android:icon="@drawable/alert_circle_outline">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://github.com/codekidX/Fontio/issues/new"/>
+    </Preference>
+
+    <Preference
         android:title="Google+ Community"
         android:summary="Join google+ community to know more about the development and share ideas."
         android:icon="@drawable/google_circles_communities">
