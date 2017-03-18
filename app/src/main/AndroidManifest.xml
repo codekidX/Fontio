@@ -34,10 +34,12 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".Settings"
+        <activity android:name="com.codekidlabs.fontio.Settings"
             android:label="@string/action_settings"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
             android:parentActivityName=".FontioPreview"
-            ></activity>
+            />
     </application>
 
 </manifest>

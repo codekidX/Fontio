@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:key="cache_switch"
+        android:title="Font Caching"
+        android:summary="Save upto 3 fonts in cache for later to be added with other fonts."/>
+
+    <Preference
+        android:key="reset_cache"
+        android:title="Reset Font Cache"
+        android:summary="Invalidate cached fonts which were previously saved." />
+
+</PreferenceScreen>

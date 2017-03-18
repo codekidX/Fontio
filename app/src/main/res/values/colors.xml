@@ -2,7 +2,9 @@
 <resources>
     <color name="colorPrimary">#483D8B</color>
     <color name="colorPrimaryDark">#352d69</color>
-    <color name="colorAccent">#87CEEB</color>
+    <color name="colorAccent">#71c695</color>
+
+    <color name="frail_white">#eaeaea</color>
 
     <color name="memory_bar_color">@color/colorAccent</color>
 </resources>
