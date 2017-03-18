@@ -26,7 +26,7 @@
         android:icon="@drawable/telegram">
     <intent
         android:action="android.intent.action.VIEW"
-        android:data="https://t.me/joinchat/AAAAAApme42SBM2mOwq4fw"/>
+        android:data="https://t.me/joinchat/AAAAAEKlt2KeA4IA2hwZ2w"/>
 </Preference>
 
 </PreferenceScreen>
