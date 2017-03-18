@@ -52,7 +52,7 @@ import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
 public class FontioPreview extends AppCompatActivity {
 
     private SeekBar mFontSizeSeeker;
-    private TextView mFontPreview;
+    private static TextView mFontPreview;
     private GeoTextView mSelectedFontName;
     private CoordinatorLayout coordinatorLayout;
 
@@ -327,6 +327,9 @@ public class FontioPreview extends AppCompatActivity {
             Intent intent = new Intent(FontioPreview.this, Settings.class);
             startActivityForResult(intent, 54);
             return true;
+        }else if(id == R.id.action_custom_quote) {
+            PreviewTextSheet previewTextSheet = new PreviewTextSheet();
+            previewTextSheet.show(getSupportFragmentManager(), "custom_quote");
         } else if(id == R.id.action_choose_font) {
             StorageChooser chooser = new StorageChooser.Builder()
                     .withActivity(this)
@@ -362,6 +365,10 @@ public class FontioPreview extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public static void setPreviewText(String text) {
+        mFontPreview.setText(text);
     }
 
     private String getSelectedFontName(String path) {
