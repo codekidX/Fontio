@@ -11,4 +11,10 @@
         android:title="Reset Font Cache"
         android:summary="Invalidate cached fonts which were previously saved." />
 
+    <SwitchPreference
+        android:key="autoinstall_switch"
+        android:title="Install Popup"
+        android:summary="Start the package manager automatically instead of clicking notification to install."/>
+
+
 </PreferenceScreen>

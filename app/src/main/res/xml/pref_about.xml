@@ -2,6 +2,17 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Preference
+        android:key="changelog_pref"
+        android:title="Changelog"
+        android:summary="View changes done in each update."
+
+        android:icon="@drawable/file_document_box">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://github.com/codekidX/Fontio"/>
+    </Preference>
+
+    <Preference
         android:title="Source Code"
         android:summary="Another extension of sparky project. Fontio is open-source but bruno is not."
 
@@ -36,6 +47,6 @@
     <intent
         android:action="android.intent.action.VIEW"
         android:data="https://t.me/joinchat/AAAAAEKlt2KeA4IA2hwZ2w"/>
-</Preference>
+    </Preference>
 
 </PreferenceScreen>

@@ -11,6 +11,42 @@
         android:orientation="vertical"
         tools:context="com.codekidlabs.fontio.Settings">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+            <ImageView
+                android:id="@+id/cx_image"
+                android:src="@mipmap/avatar"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <TextView
+                android:id="@+id/cx_title"
+                android:text="Developed By"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp"
+                android:textColor="@android:color/black"
+                android:layout_toEndOf="@+id/cx_image"
+                android:layout_marginLeft="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_below="@id/cx_title"
+                android:text="Ashish Shekar (codekidX)"
+                android:textSize="13sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="#646464"
+                android:layout_toEndOf="@+id/cx_image"
+                android:layout_marginLeft="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -37,11 +73,11 @@
 
             <TextView
                 android:layout_below="@id/fs_title"
-                android:text="version 1.4"
-                android:textSize="12sp"
+                android:text="version 1.5"
+                android:textSize="13sp"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="16dp"
-                android:textColor="#505050"
+                android:textColor="#646464"
                 android:layout_toEndOf="@+id/fs_image"
                 android:layout_marginLeft="24dp"
                 android:layout_width="wrap_content"
@@ -74,9 +110,9 @@
             <TextView
                 android:layout_below="@id/bruno_title"
                 android:text="version 1.0"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:layout_marginBottom="16dp"
-                android:textColor="#505050"
+                android:textColor="#646464"
                 android:layout_toEndOf="@+id/bruno_image"
                 android:layout_marginLeft="24dp"
                 android:layout_width="wrap_content"
@@ -108,7 +144,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:layout_width="match_parent"
-            android:layout_height="168dp"/>
+            android:layout_height="250dp"/>
 
         <RelativeLayout
             android:id="@+id/about_header"
@@ -135,7 +171,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:layout_width="match_parent"
-            android:layout_height="360dp"/>
+            android:layout_height="430dp"/>
 
 
     </LinearLayout>
