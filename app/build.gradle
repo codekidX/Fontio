@@ -11,7 +11,7 @@ android {
         applicationId "com.codekidlabs.fontio"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 1004
+        versionCode 1005
         versionName "cooper"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
