@@ -78,11 +78,8 @@ public class FontioPreview extends AppCompatActivity {
 
         FileHelper.createWorkstation();
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        SharedPreferences.Editor ed = sharedPreferences.edit();
-
-        ed.putString(References.FONTIO_DIR_KEY, "/storage/emulated/0/Expansion/packs");
-        ed.apply();
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        editor = sharedPreferences.edit();
 
         wiggleWiggleWiggle = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.anim_wiggle);
 
@@ -98,38 +95,6 @@ public class FontioPreview extends AppCompatActivity {
             fsfDownloader.execute();
         }
 
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        editor = sharedPreferences.edit();
-
-        if(sharedPreferences.contains("CLEAN")) {
-            if(sharedPreferences.getBoolean("CLEAN", false)) {
-                cleanFontioDirectory();
-
-                editor.putBoolean("CLEAN", false);
-                editor.apply();
-            }
-        }
-    }
-
-    private void cleanFontioDirectory() {
-        File dir = new File(References.FONTIO_DIR);
-        if(dir.listFiles() != null) {
-            for(File file: dir.listFiles())
-                file.delete();
-        }
-
-        try {
-            FileUtils.deleteDirectory(new File(References.FONTIO_FSF_DIR));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private void initUi() {
