@@ -11,4 +11,6 @@
 
     <!--dark values-->
     <color name="bg_dark">#161616</color>
+    <color name="bg_dark_buddy">#282828</color>
+    <color name="bg_dark_text">#7b7b7b</color>
 </resources>
