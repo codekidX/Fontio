@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "25.0.3"
 
     targetCompatibility = '1.7'
     sourceCompatibility = '1.7'
@@ -14,6 +14,8 @@ android {
         versionCode 1005
         versionName "cooper"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
 
     }
     buildTypes {
@@ -29,11 +31,15 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:design:25.2.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
     testCompile 'junit:junit:4.12'
-    compile 'com.github.codekidX:storage-chooser:1.0.32'
+    compile 'com.github.codekidX:storage-chooser:1.0.34'
     compile 'uk.co.samuelwall:material-tap-target-prompt:1.9.3'
+    compile 'com.afollestad:aesthetic:0.4.0'
+
+    compile 'com.mxn.soul:flowingdrawer-core:2.0.0'
+    compile 'com.nineoldandroids:library:2.4.0'
     compile project(':bruno')
 
 }

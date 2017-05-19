@@ -7,9 +7,9 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:clipToPadding="false"
-    app:edPosition="1"
+    app:edPosition="2"
     app:edMenuSize="280dp"
-    app:edMenuBackground="@color/colorPrimaryDark">
+    app:edMenuBackground="#1d1d1d">
 
     <!-- content-->
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"

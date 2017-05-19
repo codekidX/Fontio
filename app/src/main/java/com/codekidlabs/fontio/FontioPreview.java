@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -28,10 +29,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.aesthetic.Aesthetic;
+import com.afollestad.aesthetic.AestheticActivity;
 import com.codekidlabs.bruno.Bruno;
 import com.codekidlabs.bruno.constants.References;
 import com.codekidlabs.bruno.services.ApkBuilder;
@@ -76,6 +80,9 @@ public class FontioPreview extends AppCompatActivity {
     private FlowingDrawer mDrawer;
     private FrameLayout drawerMenu;
 
+    //root
+    RelativeLayout contentLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +98,6 @@ public class FontioPreview extends AppCompatActivity {
         editor = sharedPreferences.edit();
 
         wiggleWiggleWiggle = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.anim_wiggle);
-
 
         initUi();
 
@@ -125,6 +131,11 @@ public class FontioPreview extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+    }
+
     private void initUi() {
 
         mFontSizeSeeker = (SeekBar) findViewById(R.id.np_seekbar);
@@ -132,6 +143,7 @@ public class FontioPreview extends AppCompatActivity {
         mSelectedFontName = (GeoTextView) findViewById(R.id.selected_font_name);
         mPackageButton = (ImageButton) findViewById(R.id.package_font_button);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.co_ord);
+        contentLayout = (RelativeLayout) findViewById(R.id.content_fontio_preview);
 
     }
 
@@ -223,6 +235,10 @@ public class FontioPreview extends AppCompatActivity {
             }
         });
 
+        if(sharedPreferences.getBoolean("dm_switch", false)) {
+            contentLayout.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.bg_dark));
+            mFontPreview.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.frail_white));
+        }
 
 
     }
@@ -371,6 +387,18 @@ public class FontioPreview extends AppCompatActivity {
     private String getSelectedFontName(String path) {
         return path.substring(path.lastIndexOf("/") + 1, path.length());
     }
+
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        Aesthetic.pause(this);
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Aesthetic.resume(this);
+//    }
 
     public static class FsfDownloader extends AsyncTask<Void,Void,Void> {
 

@@ -6,5 +6,9 @@
 
     <color name="frail_white">#eaeaea</color>
 
-    <color name="memory_bar_color">@color/colorAccent</color>
+    <color name="memory_bar_color">@color/colorAccent</color>'
+
+
+    <!--dark values-->
+    <color name="bg_dark">#161616</color>
 </resources>

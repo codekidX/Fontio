@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+
+    <PreferenceCategory
+        android:title="Visual">
+        <SwitchPreference
+            android:key="dm_switch"
+            android:title="Dark Mode"
+            android:summary="Enable dark mode in preview."/>
+    </PreferenceCategory>
+
 <PreferenceCategory
     android:title="Configurations">
     <SwitchPreference
