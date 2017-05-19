@@ -26,16 +26,17 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        getFragmentManager().beginTransaction().replace(R.id.about_container, new AboutPreference()).commit();
-        getFragmentManager().beginTransaction().replace(R.id.config_container, new ConfigPreference()).commit();
+        getFragmentManager().beginTransaction().replace(R.id.about_container, new FontioPreference()).commit();
     }
 
-    public static class AboutPreference extends PreferenceFragment {
+    public static class FontioPreference extends PreferenceFragment {
+
+        Context context;
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_about);
+            addPreferencesFromResource(R.xml.pref_fontio);
 
             PreferenceScreen preferenceScreen = getPreferenceScreen();
 
@@ -48,52 +49,9 @@ public class Settings extends AppCompatActivity {
                     return true;
                 }
             });
-        }
 
-        private void showChangelogDialog() {
-            AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-
-            WebView changesView = new WebView(getActivity());
-            changesView.loadUrl("https://github.com/codekidX/Fontio/blob/master/CHANGES.md");
-            changesView.setWebViewClient(new WebViewClient() {
-                @Override
-                public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                    view.loadUrl(url);
-
-                    return true;
-                }
-            });
-
-            alert.setView(changesView);
-            alert.setNegativeButton("Close", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int id) {
-                    dialog.dismiss();
-                }
-            });
-            alert.show();
-        }
-
-        @Override
-        public void onActivityCreated(Bundle savedInstanceState) {
-            super.onActivityCreated(savedInstanceState);
-            View rootView = getView();
-            ListView list = (ListView) rootView.findViewById(android.R.id.list);
-            list.setDivider(null);
-        }
-    }
-
-    public static class ConfigPreference extends PreferenceFragment {
-
-        Context context;
-
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_config);
+            //config
             context = getActivity().getApplicationContext();
-
-            PreferenceScreen preferenceScreen = getPreferenceScreen();
 
             SwitchPreference cacheSwitch = (SwitchPreference) preferenceScreen.findPreference("cache_switch");
             SwitchPreference installSwitch = (SwitchPreference) preferenceScreen.findPreference("autoinstall_switch");
@@ -142,6 +100,39 @@ public class Settings extends AppCompatActivity {
             });
         }
 
+        private void showChangelogDialog() {
+            AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+
+            WebView changesView = new WebView(getActivity());
+            changesView.loadUrl("https://github.com/codekidX/Fontio/blob/master/CHANGES.md");
+            changesView.setWebViewClient(new WebViewClient() {
+                @Override
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                    view.loadUrl(url);
+
+                    return true;
+                }
+            });
+
+            alert.setView(changesView);
+            alert.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.dismiss();
+                }
+            });
+            alert.show();
+        }
+
+        @Override
+        public void onActivityCreated(Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            View rootView = getView();
+            ListView list = (ListView) rootView.findViewById(android.R.id.list);
+            list.setDivider(null);
+            list.setVerticalScrollBarEnabled(false);
+        }
+
         private void invalidateSwitch(Preference resetPref) {
             if(!PreferenceManager.getDefaultSharedPreferences(context).contains("cache_switch")) {
                 resetPref.setEnabled(false);
@@ -151,13 +142,18 @@ public class Settings extends AppCompatActivity {
                 resetPref.setSummary("Cache Limit Reached.");
             }
         }
+    }
+
+    public static class ConfigPreference extends PreferenceFragment {
 
         @Override
-        public void onActivityCreated(Bundle savedInstanceState) {
-            super.onActivityCreated(savedInstanceState);
-            View rootView = getView();
-            ListView list = (ListView) rootView.findViewById(android.R.id.list);
-            list.setDivider(null);
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.pref_fontio);
+
         }
+
+
+
     }
 }

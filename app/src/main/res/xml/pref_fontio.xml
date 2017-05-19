@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+<PreferenceCategory
+    android:title="Configurations">
+    <SwitchPreference
+        android:key="cache_switch"
+        android:title="Font Caching"
+        android:summary="Save upto 3 fonts in cache for later to be added with other fonts."/>
+
+    <Preference
+        android:key="reset_cache"
+        android:title="Reset Font Cache"
+        android:summary="Invalidate cached fonts which were previously saved." />
+
+    <SwitchPreference
+        android:key="autoinstall_switch"
+        android:title="Install Popup"
+        android:summary="Start the package manager automatically instead of clicking notification to install."/>
+</PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="About">
+
+        <Preference
+            android:key="changelog_pref"
+            android:title="Changelog"
+            android:summary="View changes done in each update."
+
+            android:icon="@drawable/file_document_box">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/codekidX/Fontio"/>
+        </Preference>
+
+        <Preference
+            android:title="Source Code"
+            android:summary="Another extension of sparky project. Fontio is open-source but bruno is not."
+
+            android:icon="@drawable/github_box">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/codekidX/Fontio"/>
+        </Preference>
+
+        <Preference
+            android:title="Report Issue"
+            android:summary="Reporting an issue will directly notify me and the testers group so that we can work on fixing it faster."
+            android:icon="@drawable/alert_circle_outline">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/codekidX/Fontio/issues/new"/>
+        </Preference>
+
+        <Preference
+            android:title="Google+ Community"
+            android:summary="Join google+ community to know more about the development and share ideas."
+            android:icon="@drawable/google_circles_communities">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://plus.google.com/u/1/communities/118270265642642596141"/>
+        </Preference>
+
+        <Preference
+            android:title="Testers group"
+            android:summary="Become a tester to enjoy new features first."
+            android:icon="@drawable/telegram">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/joinchat/AAAAAEKlt2KeA4IA2hwZ2w"/>
+        </Preference>
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
