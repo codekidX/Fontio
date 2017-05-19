@@ -1,4 +1,4 @@
-package com.codekidlabs;
+package com.codekidlabs.fontio;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
@@ -11,32 +11,32 @@ import android.widget.ImageView;
 import com.codekidlabs.fontio.GeoTextView;
 import com.codekidlabs.fontio.R;
 
+import java.util.ArrayList;
+
 
 public class FlowingMenuAdapter extends BaseAdapter {
 
     private Context context;
-    private String[] mMenuTitle;
-    private int[] mMenuDrawable;
+    private ArrayList<String> mMenuTitle;
 
 
     // views
     ImageView mFlowingDrawable;
     GeoTextView mFlowingTitle;
 
-    public FlowingMenuAdapter(Context context, String[] mMenuTitle, int[] mMenuDrawable) {
+    public FlowingMenuAdapter(Context context, ArrayList<String> mMenuTitle) {
         this.context = context;
         this.mMenuTitle = mMenuTitle;
-        this.mMenuDrawable = mMenuDrawable;
     }
 
     @Override
     public int getCount() {
-        return mMenuTitle.length;
+        return mMenuTitle.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mMenuTitle[position];
+        return mMenuTitle.get(position);
     }
 
     @Override
@@ -52,8 +52,8 @@ public class FlowingMenuAdapter extends BaseAdapter {
         mFlowingDrawable = (ImageView) v.findViewById(R.id.menu_icon);
         mFlowingTitle = (GeoTextView) v.findViewById(R.id.menu_title);
 
-        mFlowingDrawable.setImageDrawable(ContextCompat.getDrawable(context, mMenuDrawable[position]));
-        mFlowingTitle.setText(mMenuTitle[position]);
+        mFlowingTitle.setText(mMenuTitle.get(position));
+        mFlowingDrawable.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.currency_chf));
 
         return v;
     }

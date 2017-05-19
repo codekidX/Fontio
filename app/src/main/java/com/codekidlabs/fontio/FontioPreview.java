@@ -34,10 +34,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.afollestad.aesthetic.Aesthetic;
-import com.afollestad.aesthetic.AestheticActivity;
 import com.codekidlabs.bruno.Bruno;
 import com.codekidlabs.bruno.constants.References;
+import com.codekidlabs.bruno.gfont.GoogleFonts;
 import com.codekidlabs.bruno.services.ApkBuilder;
 import com.codekidlabs.bruno.services.ApkService;
 import com.codekidlabs.bruno.services.TtfService;
@@ -54,6 +53,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
 
@@ -61,12 +61,12 @@ public class FontioPreview extends AppCompatActivity {
 
     private SeekBar mFontSizeSeeker;
     private static TextView mFontPreview;
-    private GeoTextView mSelectedFontName;
+    public static GeoTextView mSelectedFontName;
     private CoordinatorLayout coordinatorLayout;
 
     private ImageButton mPackageButton;
 
-    private String selectedTtf;
+    public static String selectedTtf;
 
     private Bruno mBruno;
 
@@ -77,7 +77,7 @@ public class FontioPreview extends AppCompatActivity {
     private Menu fontioMenu;
 
     // Flowing drawer
-    private FlowingDrawer mDrawer;
+    public static FlowingDrawer mDrawer;
     private FrameLayout drawerMenu;
 
     //root
@@ -88,11 +88,14 @@ public class FontioPreview extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fontio_preview);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         FileHelper.createWorkstation();
+
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         editor = sharedPreferences.edit();
@@ -117,13 +120,12 @@ public class FontioPreview extends AppCompatActivity {
             @Override
             public void onDrawerStateChange(int oldState, int newState) {
                 if (newState == ElasticDrawer.STATE_CLOSED) {
-                    Log.i("MainActivity", "Drawer STATE_CLOSED");
                 }
             }
 
             @Override
             public void onDrawerSlide(float openRatio, int offsetPixels) {
-                Log.i("MainActivity", "openRatio=" + openRatio + " ,offsetPixels=" + offsetPixels);
+//                Log.i("MainActivity", "openRatio=" + openRatio + " ,offsetPixels=" + offsetPixels);
             }
         });
 
@@ -235,12 +237,16 @@ public class FontioPreview extends AppCompatActivity {
             }
         });
 
+        applyDarkTheme();
+
+
+    }
+
+    private void applyDarkTheme() {
         if(sharedPreferences.getBoolean("dm_switch", false)) {
             contentLayout.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.bg_dark));
             mFontPreview.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.frail_white));
         }
-
-
     }
 
     private void showChooseFontPrompt() {
@@ -380,6 +386,14 @@ public class FontioPreview extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public static void setPreviewTypeface() {
+        mFontPreview.setTypeface(Typeface.createFromFile(selectedTtf));
+    }
+
+    public static void setSelectedFontName(String fontName) {
+        mSelectedFontName.setText(fontName);
+    }
+
     public static void setPreviewText(String text) {
         mFontPreview.setText(text);
     }
@@ -397,7 +411,6 @@ public class FontioPreview extends AppCompatActivity {
 //    @Override
 //    protected void onResume() {
 //        super.onResume();
-//        Aesthetic.resume(this);
 //    }
 
     public static class FsfDownloader extends AsyncTask<Void,Void,Void> {
