@@ -26,4 +26,8 @@ public class GeoTextView extends TextView {
         Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/Geo-Regular.ttf");
         setTypeface(typeface);
     }
+
+    public static Typeface getGeoTypeface(Context context) {
+        return Typeface.createFromAsset(context.getAssets(), "fonts/Geo-Regular.ttf");
+    }
 }
