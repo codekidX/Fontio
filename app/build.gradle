@@ -11,7 +11,7 @@ android {
         applicationId "com.codekidlabs.fontio"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 1005
+        versionCode 1010
         versionName "cooper"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -36,7 +36,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.github.codekidX:storage-chooser:1.0.34'
     compile 'uk.co.samuelwall:material-tap-target-prompt:1.9.3'
-    compile 'com.afollestad:aesthetic:0.4.0'
 
     compile 'com.mxn.soul:flowingdrawer-core:2.0.0'
     compile 'com.nineoldandroids:library:2.4.0'
