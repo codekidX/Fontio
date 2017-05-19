@@ -13,12 +13,6 @@
         android:title="CMTE" />
 
     <item
-        android:id="@+id/sammy_font"
-        android:enabled="false"
-        android:icon="@drawable/brush"
-        android:title="Samsung" />
-
-    <item
         android:id="@+id/flashable_font"
         android:enabled="false"
         android:icon="@drawable/zip_box"
