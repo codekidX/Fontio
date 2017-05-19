@@ -19,12 +19,14 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -39,6 +41,8 @@ import com.codekidlabs.bruno.services.ZipService;
 import com.codekidlabs.fontio.helpers.FileHelper;
 import com.codekidlabs.storagechooser.StorageChooser;
 import com.codekidlabs.storagechooser.utils.DiskUtil;
+import com.mxn.soul.flowingdrawer_core.ElasticDrawer;
+import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
 
 import org.apache.commons.io.FileUtils;
 
@@ -68,6 +72,11 @@ public class FontioPreview extends AppCompatActivity {
 
     private Menu fontioMenu;
 
+    // Flowing drawer
+    private FlowingDrawer mDrawer;
+    private FrameLayout drawerMenu;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +104,25 @@ public class FontioPreview extends AppCompatActivity {
             fsfDownloader.execute();
         }
 
+
+        mDrawer = (FlowingDrawer) findViewById(R.id.drawerlayout);
+        mDrawer.setTouchMode(ElasticDrawer.TOUCH_MODE_BEZEL);
+        mDrawer.setOnDrawerStateChangeListener(new ElasticDrawer.OnDrawerStateChangeListener() {
+            @Override
+            public void onDrawerStateChange(int oldState, int newState) {
+                if (newState == ElasticDrawer.STATE_CLOSED) {
+                    Log.i("MainActivity", "Drawer STATE_CLOSED");
+                }
+            }
+
+            @Override
+            public void onDrawerSlide(float openRatio, int offsetPixels) {
+                Log.i("MainActivity", "openRatio=" + openRatio + " ,offsetPixels=" + offsetPixels);
+            }
+        });
+
+        getFragmentManager().beginTransaction().replace(R.id.id_container_menu, new FlowingMenuFragment()).commit();
+
     }
 
     private void initUi() {
@@ -105,7 +133,6 @@ public class FontioPreview extends AppCompatActivity {
         mPackageButton = (ImageButton) findViewById(R.id.package_font_button);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.co_ord);
 
-        cleanFontioDirectory();
     }
 
 
